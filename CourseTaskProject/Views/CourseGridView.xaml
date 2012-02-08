@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.CourseGridView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+    Height="auto" Width="auto" Loaded="UserControl_Loaded">
+    <Grid>
+        <dg:DataGrid 
+            Name="CourseGrid"
+                     AutoGenerateColumns="False"
+                     SelectedValuePath="CourseID"
+                     RowEditEnding="CourseGrid_RowEditEnding"
+                     CanUserAddRows="False">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTextColumn Header="Course Code" IsReadOnly="True" Binding="{Binding CourseCode}" MinWidth="80"/>
+                <dg:DataGridTextColumn Header="Coures Title" IsReadOnly="True" Binding="{Binding CourseTitle}" MinWidth="150" />
+                <dg:DataGridTextColumn Header="Section" IsReadOnly="True" Binding="{Binding CourseSection}" MinWidth="50" />
+                <dg:DataGridTextColumn Header="Description" IsReadOnly="True" Binding="{Binding CourseDesc}" MinWidth="300" />
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+    </Grid>
+           
+</UserControl>

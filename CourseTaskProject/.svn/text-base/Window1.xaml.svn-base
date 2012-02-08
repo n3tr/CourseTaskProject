@@ -1,0 +1,381 @@
+﻿<r:RibbonWindow x:Class="CourseTaskProject.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:r="clr-namespace:Microsoft.Windows.Controls.Ribbon;assembly=RibbonControlsLibrary"
+        xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+        xmlns:view="clr-namespace:CourseTaskProject.Views"
+    Title="Window1" Height="600" Width="820" MinWidth="800" Loaded="Window_Loaded">
+    
+    <r:RibbonWindow.Resources>
+        <ResourceDictionary>
+            <r:RibbonCommand 
+      x:Key="ExitMenuItem"
+      Executed="Exit_Click"
+      LabelTitle="Exit"
+      ToolTipDescription="Close Application."
+      ToolTipTitle="Close Application."
+                 LargeImageSource="Images/CancelIcon.png"
+                SmallImageSource="Images/CancelIcon.png"
+               />
+            <r:RibbonCommand 
+      x:Key="NewCourseMenuItem"
+      Executed="RibbonNewCourse_Click"
+      LabelTitle="New Course"
+      ToolTipDescription="Create a new Course."
+      ToolTipTitle="New Course"
+                 LargeImageSource="Images/NewCourseIcon.png"
+                SmallImageSource="Images/NewCourseIcon.png"
+               />
+            
+              <r:RibbonCommand 
+              x:Key="ApplicationButton"
+              LabelTitle="Application Button"
+              LabelDescription="Close the application."
+              LargeImageSource="Images\Application.png"
+              ToolTipTitle="Coursetask Project"
+              ToolTipDescription="Click here to create new course or add student."
+              ToolTipImageSource="Images\Application.png"
+              ToolTipFooterTitle="Visit code.google.com/p/coursetask for more information."/>
+            <r:RibbonCommand
+                x:Key="NewCourseButton"
+                LabelTitle="New"
+                LargeImageSource="Images/NewCourseIcon.png"
+                SmallImageSource="Images/NewCourseIcon.png"
+                Executed="RibbonNewCourse_Click"
+                LabelDescription="Create New Course."
+                ToolTipTitle="Create New Course."
+                ToolTipDescription="Click Here to Create New Course."/>
+            <r:RibbonCommand
+                x:Key="EditCourseButton"
+                LabelTitle="Edit"
+                LargeImageSource="Images/EditCourseIcon.png"
+                SmallImageSource="Images/EditCourseIcon.png"
+                Executed="RibbonEditCourse_Click"
+                />
+            <r:RibbonCommand
+                x:Key="ViewCourseDetail"
+                LabelTitle="View Course"
+                LargeImageSource="Images/EditCourseIcon.png"
+                SmallImageSource="Images/EditCourseIcon.png"
+                Executed="RibbonViewCourseDetail_Click"
+                />
+            <r:RibbonCommand
+                x:Key="DeleteCourseButton"
+                LabelTitle="Delete"
+                 LargeImageSource="Images/DeleteCourseIcon.png"
+                 SmallImageSource="Images/DeleteCourseIcon.png"
+                 Executed="RibbonDeleteCourse_Click"
+                />
+            <r:RibbonCommand
+                x:Key="NewStudentButton"
+                LabelTitle="Add"
+                 LargeImageSource="Images/NewStudentIcon.png"
+                Executed="RibbonNewStudent_Click"
+                 />
+            <r:RibbonCommand
+                x:Key="EditStudentButton"
+                LabelTitle="Edit"
+                 LargeImageSource="Images/EditStudentIcon.png"
+                 SmallImageSource="Images/EditStudentIcon.png"
+                Executed="RibbonEditStudent_Click"
+                />
+            <r:RibbonCommand
+                x:Key="DeleteStudentButton"
+                LabelTitle="Delete"
+               LargeImageSource="Images/DeleteStudentIcon.png"
+             SmallImageSource="Images/DeleteStudentIcon.png"
+                Executed="RibbonDeleteStudent_Click"
+            />
+            <r:RibbonCommand
+                x:Key="ManageGroupButton"
+                LabelTitle="Manage"
+                 LargeImageSource="Images/ManageGroupIcon.png"
+                Executed="RibbonManageGroup_Click"
+                />
+            <r:RibbonCommand
+                x:Key="AddCourseButton"
+                LabelTitle="Confirm"
+                 LargeImageSource="Images/ConfirmIcon.png"
+                 Executed="RibbonAddCourse_Click"/>
+            <r:RibbonCommand
+                x:Key="CancelCourseButton"
+                LabelTitle="Cancel"
+               LargeImageSource="Images/CancelIcon.png"
+             SmallImageSource="Images/CancelIcon.png"
+             Executed="RibbonCancelCourse_Click"
+            />
+            
+            <r:RibbonCommand
+                x:Key="ClearCourseButton"
+                LabelTitle="Clear Field"
+               LargeImageSource="Images/ClearIcon.png"
+             SmallImageSource="Images/ClearIcon.png"
+             Executed="RibbonClearCourse_Click"
+            />
+            <r:RibbonCommand
+                x:Key="ExitManageButton"
+                LabelTitle="Exit"
+               LargeImageSource="Images/CancelIcon.png"
+             SmallImageSource="Images/CancelIcon.png"
+             Executed="RibbonExitManage_Click"
+            />
+            <r:RibbonCommand
+                x:Key="AddStudentButton"
+                LabelTitle="Confirm"
+                 LargeImageSource="Images/ConfirmIcon.png"
+                 Executed="RibbonAddStudent_Click"/>
+            <r:RibbonCommand
+                x:Key="CancelStudentButton"
+                LabelTitle="Cancel"
+                 LargeImageSource="Images/CancelIcon.png"
+                 Executed="RibbonCancelStudent_Click"/>
+
+        </ResourceDictionary>
+    </r:RibbonWindow.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <r:Ribbon Name="ribbonControl" Title="CourseTask | Course Management">
+              
+                <r:Ribbon.ApplicationMenu>
+                    <r:RibbonApplicationMenu Command="{StaticResource ApplicationButton}">
+                        <r:RibbonApplicationMenuItem Command="{StaticResource NewCourseMenuItem}"/>
+                        <Separator/>
+                        <r:RibbonApplicationMenuItem Command="{StaticResource ExitMenuItem}"/>
+                    </r:RibbonApplicationMenu>
+                    
+                </r:Ribbon.ApplicationMenu>
+
+
+
+                <r:RibbonTab Label="Course" Name="courseTab" IsSelected="True" Selected="CourseTab_Select">
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Control" />
+                        </r:RibbonGroup.Command>
+                        
+                        <r:RibbonButton Command="{StaticResource NewCourseButton}"/>
+                        <r:RibbonButton Command="{StaticResource EditCourseButton}"/>
+                        <r:RibbonButton Command="{StaticResource DeleteCourseButton}"/>
+                                 
+                    </r:RibbonGroup>
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Access" />
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource ViewCourseDetail}"/>
+                        
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+
+                <!-- Student Ribbon Tab -->
+                <r:RibbonTab Label="Student" Name="studentTab" Selected="StudentTab_Select">
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Control"/>
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource NewStudentButton}"/>
+                        <r:RibbonButton Command="{StaticResource EditStudentButton}"/>
+                        <r:RibbonButton Command="{StaticResource DeleteStudentButton}"/>        
+                    </r:RibbonGroup>
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Manage Group"/>
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource ManageGroupButton}"/>             
+                    </r:RibbonGroup>
+                </r:RibbonTab>
+                
+                <r:RibbonTab Label="New Course" Name="NewCourseTab" Visibility="Collapsed">
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Control"/>
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource AddCourseButton}"/>
+                        <r:RibbonButton Command="{StaticResource CancelCourseButton}"/>
+                        <r:RibbonButton Name="ClearCourseField" Command="{StaticResource ClearCourseButton}"/>
+                            
+                                
+                        
+                    </r:RibbonGroup>
+                   
+                        
+                </r:RibbonTab>
+                <r:RibbonTab Label="Manage Group" Name="ManageGroupTab" Visibility="Collapsed">
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Control"/>
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource ExitManageButton}"/>
+                        
+
+
+
+                    </r:RibbonGroup>
+
+
+                </r:RibbonTab>
+                
+                <r:RibbonTab Label="New Student" Name="NewStudentTab" Visibility="Collapsed">
+                    <r:RibbonGroup>
+                        <r:RibbonGroup.Command>
+                            <r:RibbonCommand LabelTitle="Control"/>
+                        </r:RibbonGroup.Command>
+                        <r:RibbonButton Command="{StaticResource AddStudentButton}"/>
+                        <r:RibbonButton Command="{StaticResource CancelStudentButton}"/>
+
+
+
+
+                    </r:RibbonGroup>
+
+
+                </r:RibbonTab>
+
+
+                <!-- 
+                **  Context Tab Group for Course Detail
+                -->
+
+                <r:Ribbon.ContextualTabGroups>
+                    <r:RibbonContextualTabGroup Name="CourseDetailTab"
+                                                Label="About Course"
+                                                MinWidth="200">
+                        <r:RibbonTab Label="Student Registered" Name="RegistedCourseTab" Selected="RegisterCourseTab_Select">
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Student Control"/>
+                                </r:RibbonGroup.Command>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Add Student"
+                                                            LargeImageSource="Images/NewStudentIcon.png"
+                                                 SmallImageSource="Images/NewStudentIcon.png"
+                                                         Executed="RibbonAddStudentByCode_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Delete Student"
+                                                            LargeImageSource="Images/DeleteStudentIcon.png"
+                                                 SmallImageSource="Images/NewStudentIcon.png"
+                                                         Executed="RibbonDeleteOfCourse_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Close"/>
+                                </r:RibbonGroup.Command>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Close"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonExitCourseDetail_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                        </r:RibbonTab>
+                        
+                       
+                        <r:RibbonTab Label="Assessment" Name="AssessmentTab" Selected="AssessmentTab_Select">
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Manage Assessment"/>
+                                </r:RibbonGroup.Command>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Manage"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonManageAssess_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                            
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Close"/>
+                                </r:RibbonGroup.Command>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Close"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonExitCourseDetail_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                        </r:RibbonTab>
+                        <r:RibbonTab Label="Report" Name="ReportTab" Selected="ReportTab_Select" >
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Close"/>
+                                </r:RibbonGroup.Command>
+                               
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Close"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonExitCourseDetail_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                        </r:RibbonTab>
+                        <r:RibbonTab Label="Manage Assessment" Name="ManageAssessmentTab" Selected="ManageAssessmentTab_Select">
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Close"/>
+                                </r:RibbonGroup.Command>
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Close"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonExitCourseDetail_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+
+
+                        </r:RibbonTab>
+                        <r:RibbonTab Label="Add Student" Name="RegisterStudenTab" Selected="RegisterStudenTab_Select">
+                            
+                            <r:RibbonGroup>
+                                <r:RibbonGroup.Command>
+                                    <r:RibbonCommand LabelTitle="Close"/>
+                                </r:RibbonGroup.Command>
+
+                                <r:RibbonButton>
+                                    <r:RibbonButton.Command>
+                                        <r:RibbonCommand LabelTitle="Close"
+                                                            LargeImageSource="Images/NewCourseIcon.png"
+                                                 SmallImageSource="Images/NewCourseIcon.png"
+                                                         Executed="RibbonExitCourseDetail_Click"
+                                                        />
+                                    </r:RibbonButton.Command>
+                                </r:RibbonButton>
+                            </r:RibbonGroup>
+                        </r:RibbonTab>
+                    </r:RibbonContextualTabGroup>
+                </r:Ribbon.ContextualTabGroups>
+            </r:Ribbon>
+        </Grid>
+        <Grid Grid.Row="1" Name="MainContent">
+            
+        </Grid>
+        
+    </Grid>
+</r:RibbonWindow>

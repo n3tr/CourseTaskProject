@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.AssessmentGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+             Loaded="UserControl_Loaded"
+    Height="auto" Width="auto" Background="WhiteSmoke">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Height="25" Orientation="Horizontal">
+            <TextBlock Margin="10,0">Select Assessment: </TextBlock>
+            <ComboBox DisplayMemberPath="AssessTitle" SelectedValuePath="AssessID" Name="assessComboBox" 
+                      MinWidth='150'
+                      SelectionChanged="AssessComboBoxSelect_Change"></ComboBox>
+            <CheckBox Margin="30,5" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked">Show All Student</CheckBox>
+        </StackPanel>
+        
+        <dg:DataGrid Grid.Row="1" Name="ScoreGrid"
+                     AutoGenerateColumns="False" 
+                     SelectedValuePath="ScoreID"
+                     CellEditEnding="EditScore_Ended"
+                     
+                     CanUserAddRows="False">
+             <dg:DataGrid.Columns>
+                 <dg:DataGridTextColumn Header="Student Code" IsReadOnly="True" Binding="{Binding Students.StudentCode}" MinWidth="80"/>
+                <dg:DataGridTextColumn Header="First Name" IsReadOnly="True" Binding="{Binding Students.StudentFirstName}" MinWidth="150"/>
+                <dg:DataGridTextColumn Header="Last Name" IsReadOnly="True" Binding="{Binding Students.StudentLastName}" MinWidth="150" />
+                 <dg:DataGridTextColumn Header="Assessment" IsReadOnly="True" Binding="{Binding Assessments.AssessTitle}" MinWidth="150" />
+                <dg:DataGridTextColumn Header="Score"  Binding="{Binding Score,Mode=TwoWay}" MinWidth="100"  />
+
+            </dg:DataGrid.Columns>
+        </dg:DataGrid>
+    </Grid>
+</UserControl>

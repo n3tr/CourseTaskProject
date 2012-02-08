@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.RegisterStudent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="auto" Width="auto" Background="WhiteSmoke" Loaded="UserControl_Loaded">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            
+        </Grid.ColumnDefinitions>
+        <Expander Header="Add By Student Code" Width="auto" Height="auto" MinWidth="440" Name="AddByCodeExp">
+            <StackPanel Grid.Column="0" Margin="0,10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock >Search By Student Code :</TextBlock>
+                    <TextBox Margin="10,0,10,0" Name="studentCodeSearchTxt" MinWidth="150"></TextBox>
+                    <Button MinWidth="75" Click="SearchStudent_Click">Search</Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Margin="0,0,10,0">Student Code :</TextBlock>
+                    <TextBox Name="StudentCodeTxt" IsEnabled="False" MinWidth="150"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Margin="0,0,10,0">Student First Name :</TextBlock>
+                    <TextBox Name="StudentFirstNameTxt" IsEnabled="False" MinWidth="150"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Margin="0,0,10,0">Student Last Name :</TextBlock>
+                    <TextBox Name="StudentLastNameTxt" IsEnabled="False" MinWidth="150"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <TextBlock Margin="0,0,10,0">Student Group :</TextBlock>
+                    <TextBox Name="StudentGroupTxt" IsEnabled="False" MinWidth="150"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Name="AddStudentBth" Click="AddStudent_Click">Add This Student</Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Expander>
+        <Expander Grid.Column="1" Header="Add By Student Group" Width="auto" Height="auto" Margin="10,0" MinWidth="250">
+            <StackPanel Grid.Column="2" >
+                <ComboBox Width="200" Margin="0,10" Name="ComboBox_Group" DisplayMemberPath="GroupTitle" SelectedValuePath="GroupID"></ComboBox>
+                <Button Width="150" Click="AddStudentByGroup_Click">Add Student Group</Button>
+
+            </StackPanel>
+        </Expander>
+        
+    </Grid>
+</UserControl>

@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using CourseTaskProject.Data;
+
+namespace CourseTaskProject.Views
+{
+    /// <summary>
+    /// Interaction logic for AssessmentGrid.xaml
+    /// </summary>
+    public partial class AssessmentGrid : UserControl
+    {
+        private Courses _course;
+        public AssessmentGrid()
+        {
+            InitializeComponent();
+        }
+
+        public Courses course
+        {
+            get { return this._course; }
+            set { this._course = value; }
+        }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoadData();
+           
+            
+        }
+
+        public void LoadData()
+        {
+            var ass = (from a in CourseData.db.Assessments
+                     where a.Courses == this.course
+                     select a);
+
+            assessComboBox.ItemsSource = ass.ToList();
+           
+        }
+
+        private void AssessComboBoxSelect_Change(object sender, SelectionChangedEventArgs e)
+        {
+            var score = (from s in CourseData.db.Scores
+                         where s.Assessments == assessComboBox.SelectedItem
+                         select s);
+
+            
+            ScoreGrid.ItemsSource = score.ToList();
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditScore_Ended(object sender, Microsoft.Windows.Controls.DataGridCellEditEndingEventArgs e)
+        {
+            
+               
+            
+        }
+
+        private void Cell_Change(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void EditScore_Ended(object sender, Microsoft.Windows.Controls.DataGridRowEditEndingEventArgs e)
+        {
+            Scores score = e.Row.Item as Scores;
+
+
+
+            Scores sc = (from s in CourseData.db.Scores
+                         where s.ScoreID == score.ScoreID
+                         select s).FirstOrDefault();
+            if (sc.Score <= sc.Assessments.AssessMaxScore)
+            {
+                sc.Score = score.Score;
+            }
+            else
+            {
+                MessageBox.Show("Score Must be lower Max Score : " + sc.Assessments.AssessMaxScore.ToString());
+                sc.Score = sc.Assessments.AssessMaxScore;
+            }
+            
+            // MessageBox.Show(sc.StudentID.ToString() + sc.ScoreID.ToString());
+            CourseData.db.SubmitChanges();
+        }
+
+        
+
+     
+    }
+}

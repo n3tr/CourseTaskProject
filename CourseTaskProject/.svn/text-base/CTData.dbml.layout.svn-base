@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="CTData">
+  <DataContextMoniker Name="/CTData" />
+  <nestedChildShapes>
+    <classShape Id="e480a906-1df6-4009-a889-005eb226da30" absoluteBounds="0.5, 4.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/CTData/Assessments" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ba9f7339-befb-4b85-895c-0476858939ea" absoluteBounds="0.51500000000000012, 4.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f1132b6-83b3-481f-8d91-326c073cd1bd" absoluteBounds="0.625, 1.125, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/CTData/Courses" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e3d8265f-2c13-4dac-ba78-94dffc58b722" absoluteBounds="0.64000000000000057, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ae357018-f270-4f46-a430-169a49fb3bc0" absoluteBounds="3.25, 1.125, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/CTData/Registers" />
+      <nestedChildShapes>
+        <elementListCompartment Id="60f674cf-371e-47f1-88d8-4217f286c599" absoluteBounds="3.265, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86e53ce0-42a9-457f-900f-2a7cdfbe2553" absoluteBounds="3.25, 3.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/CTData/Scores" />
+      <nestedChildShapes>
+        <elementListCompartment Id="788e0d60-e3b0-4906-b3cb-fad75e2f4d93" absoluteBounds="3.265, 4.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dae7f9af-23b3-4331-99dd-5ce723e9a409" absoluteBounds="6.125, 1.125, 2, 1.3862939453125003">
+      <DataClassMoniker Name="/CTData/StudentGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f82493c-7910-4607-a89b-7fc50d986a90" absoluteBounds="6.14, 1.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="02e2f5ff-ce20-4ccb-bf4b-3346243d4942" absoluteBounds="6.125, 3.75, 2, 1.7708968098958327">
+      <DataClassMoniker Name="/CTData/Students" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac271a92-d92e-4bbb-8f29-176fbd169260" absoluteBounds="6.1400000000000006, 4.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.625 : 1.81814697265625); (3.25 : 1.81814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/Courses/Courses_Registers" />
+      <nodes>
+        <classShapeMoniker Id="6f1132b6-83b3-481f-8d91-326c073cd1bd" />
+        <classShapeMoniker Id="ae357018-f270-4f46-a430-169a49fb3bc0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.125 : 2.5112939453125); (7.125 : 3.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/StudentGroup/StudentGroup_Students" />
+      <nodes>
+        <classShapeMoniker Id="dae7f9af-23b3-4331-99dd-5ce723e9a409" />
+        <classShapeMoniker Id="02e2f5ff-ce20-4ccb-bf4b-3346243d4942" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.125 : 3.75); (5.75 : 3.375); (5.75 : 1.81814697265625); (5.25 : 1.81814697265625)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/Students/Students_Registers" />
+      <nodes>
+        <classShapeMoniker Id="02e2f5ff-ce20-4ccb-bf4b-3346243d4942" />
+        <classShapeMoniker Id="ae357018-f270-4f46-a430-169a49fb3bc0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.125 : 4.66429768880208); (5.25 : 4.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/Students/Students_Scores" />
+      <nodes>
+        <classShapeMoniker Id="02e2f5ff-ce20-4ccb-bf4b-3346243d4942" />
+        <classShapeMoniker Id="86e53ce0-42a9-457f-900f-2a7cdfbe2553" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5625 : 2.89589680989583); (1.5625 : 4.375)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/Courses/Courses_Assessments" />
+      <nodes>
+        <classShapeMoniker Id="6f1132b6-83b3-481f-8d91-326c073cd1bd" />
+        <classShapeMoniker Id="e480a906-1df6-4009-a889-005eb226da30" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 4.91429768880208); (3.25 : 4.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/CTData/Assessments/Assessments_Scores" />
+      <nodes>
+        <classShapeMoniker Id="e480a906-1df6-4009-a889-005eb226da30" />
+        <classShapeMoniker Id="86e53ce0-42a9-457f-900f-2a7cdfbe2553" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

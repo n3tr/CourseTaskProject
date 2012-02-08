@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.ManageGroup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Width="auto" Height="auto" Background="WhiteSmoke" Loaded="UserControl_Loaded">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.RowSpan="3" Margin="10" >
+            <TextBlock>Group</TextBlock>
+            <ListBox  Margin="0,5,0,0" Name="ListGroup" DisplayMemberPath="GroupTitle" Width="200" Height="200" SelectedValuePath="GroupID" SelectionChanged="GroupList_Select"></ListBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,15,5">
+                <Button Name="AddButtun" Click="PreAddGroup_Click" Margin="5,0,5,0"  Width="25" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Right">+</Button>
+                <Button Name="DeleteButton" Click="DeleteGroup_Click"  Width="25" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" HorizontalAlignment="Right">-</Button>
+            </StackPanel>
+           
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" MinWidth="150" Margin="10" Name="GroupField" Visibility="Hidden">
+            <TextBlock>Group Title</TextBlock>
+            <TextBox Name="GroupTitleTxt"></TextBox>
+            <TextBlock>Group Description</TextBlock>
+            <TextBox  TextWrapping="Wrap" MinHeight="100" Name="GroupDescTxt"></TextBox>
+            <StackPanel Orientation="Horizontal">
+                <Button Name="AddGroupBth" Margin="10" Width="75" Click="AddGroupBth_Click">Add</Button>
+                <Button Name="UpdateGroupBth" Margin="10" Width="75" Visibility="Hidden" Click="UpdateGroupBth_Click">Update</Button>
+                <Button Name="CancelGroupBth" Margin="10" Width="75" Click="CancelGroupBth_Click">Cancel</Button>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</UserControl>

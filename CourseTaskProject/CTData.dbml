@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="CTData" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="Assessments">
+    <Type Name="Assessments">
+      <Column Name="AssessID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AssessTitle" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AssessDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="AssessMaxScore" Type="System.Single" DbType="Real NOT NULL" CanBeNull="false" />
+      <Association Name="Assessments_Scores" Member="Scores" ThisKey="AssessID" OtherKey="AssessID" Type="Scores" />
+      <Association Name="Courses_Assessments" Member="Courses" ThisKey="CourseID" OtherKey="CourseID" Type="Courses" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Courses">
+    <Type Name="Courses">
+      <Column Name="CourseID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseCode" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CourseSection" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CourseTitle" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="CourseDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="Courses_Assessments" Member="Assessments" ThisKey="CourseID" OtherKey="CourseID" Type="Assessments" />
+      <Association Name="Courses_Registers" Member="Registers" ThisKey="CourseID" OtherKey="CourseID" Type="Registers" />
+    </Type>
+  </Table>
+  <Table Name="Registers">
+    <Type Name="Registers">
+      <Column Name="RegisterID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CourseID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Courses_Registers" Member="Courses" ThisKey="CourseID" OtherKey="CourseID" Type="Courses" IsForeignKey="true" />
+      <Association Name="Students_Registers" Member="Students" ThisKey="StudentID" OtherKey="StudentID" Type="Students" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="Scores">
+    <Type Name="Scores">
+      <Column Name="ScoreID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AssessID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Score" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Association Name="Students_Scores" Member="Students" ThisKey="StudentID" OtherKey="StudentID" Type="Students" IsForeignKey="true" />
+      <Association Name="Assessments_Scores" Member="Assessments" ThisKey="AssessID" OtherKey="AssessID" Type="Assessments" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="StudentGroup">
+    <Type Name="StudentGroup">
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupTitle" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupDesc" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="StudentGroup_Students" Member="Students" ThisKey="GroupID" OtherKey="GroupID" Type="Students" />
+    </Type>
+  </Table>
+  <Table Name="Students">
+    <Type Name="Students">
+      <Column Name="StudentID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StudentCode" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="StudentFirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="StudentLastName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="Students_Registers" Member="Registers" ThisKey="StudentID" OtherKey="StudentID" Type="Registers" />
+      <Association Name="Students_Scores" Member="Scores" ThisKey="StudentID" OtherKey="StudentID" Type="Scores" />
+      <Association Name="StudentGroup_Students" Member="StudentGroup" ThisKey="GroupID" OtherKey="GroupID" Type="StudentGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

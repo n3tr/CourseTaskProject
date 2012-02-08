@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.NewStudent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     Height="auto" Width="auto" Loaded="UserControl_Loaded" Background="WhiteSmoke">
+    <Grid Margin="5,5,5,0">
+        <StackPanel>
+            <TextBlock Margin="5">Student Code</TextBlock>
+            <Grid  Margin="5">
+                <TextBox Name="StudentCodeTxt">
+
+                </TextBox>
+            </Grid>
+            <TextBlock  Margin="5">Student First Name</TextBlock>
+            <Grid  Margin="5">
+                <TextBox Name="StudentFirstNameTxt">
+
+                </TextBox>
+            </Grid>
+            <TextBlock  Margin="5">Student Last Name</TextBlock>
+            <Grid  Margin="5">
+                <TextBox Name="StudentLastNameTxt">
+
+                </TextBox>
+            </Grid>
+            <TextBlock  Margin="5">Student Group</TextBlock>
+            <Grid  Margin="5">
+                <ComboBox Name="ComboGroup" DisplayMemberPath="GroupTitle" SelectedValuePath="GroupID"></ComboBox>
+            </Grid>
+            
+        </StackPanel>
+    </Grid>
+
+</UserControl>

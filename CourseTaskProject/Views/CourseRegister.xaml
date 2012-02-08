@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="CourseTaskProject.Views.CourseRegister"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dg="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit"
+    Height="auto" Width="auto">
+    <Grid>
+        <dg:DataGrid Name="CourseRegiserGrid" 
+                     AutoGenerateColumns="False"
+                     SelectedValuePath="CourseID"
+                    
+                     CanUserAddRows="False">
+            <dg:DataGrid.Columns>
+                <dg:DataGridTextColumn Header="Student Code" IsReadOnly="True" Binding="{Binding Students.StudentCode}" MinWidth="100"/>
+                <dg:DataGridTextColumn Header="Student First Name" IsReadOnly="True" Binding="{Binding Students.StudentFirstName}" MinWidth="150" />
+                <dg:DataGridTextColumn Header="Student Last Name" IsReadOnly="True" Binding="{Binding Students.StudentLastName}" MinWidth="150" />
+                <dg:DataGridTextColumn Header="Student Group" IsReadOnly="True" Binding="{Binding Students.StudentGroup.GroupTitle}" MinWidth="100" />
+                <dg:DataGridTextColumn Header="Course Code" IsReadOnly="True" Binding="{Binding Courses.CourseCode}" MinWidth="50" />
+                <dg:DataGridTextColumn Header="Course Title" IsReadOnly="True" Binding="{Binding Courses.CourseTitle}" MinWidth="150" />
+                <dg:DataGridTextColumn Header="Section" IsReadOnly="True" Binding="{Binding Courses.CourseSection}" MinWidth="80" />
+            </dg:DataGrid.Columns>
+            
+        </dg:DataGrid>
+    </Grid>
+</UserControl>
